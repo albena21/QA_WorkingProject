@@ -16,7 +16,6 @@ public class Thesis extends TestUtil {
 
     @Test
     public void logIn(){
-        webDrv.get("https://www.saucedemo.com/");
         WebElement userNameInput = webDrv.findElement(By.id ("user-name"));
         userNameInput.sendKeys("standard_user");
 

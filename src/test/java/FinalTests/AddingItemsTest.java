@@ -2,19 +2,14 @@ package FinalTests;
 
 import Base.TestUtil;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class AddingItemsTest extends TestUtil {
 
     @Test
     public void AddItemtoCart(){
-        webDrv.get("https://www.saucedemo.com/");
         WebElement userNameInput = webDrv.findElement(By.id ("user-name"));
         userNameInput.sendKeys("standard_user");
 

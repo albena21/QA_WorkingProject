@@ -1,20 +1,34 @@
 package FinalTests;
 
 import Base.TestUtil;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class BuyItemsTest extends TestUtil {
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
 
-    @Test
-    public void CheckOut() {
-        webDrv.get("https://www.saucedemo.com/");
+public class BuyItemsTest extends TestUtil {
+    @DataProvider(name = "DataBuyer")
+    public static Object[][] readCvsloginFile() throws IOException, CsvException {
+        try (CSVReader csvReader = new CSVReader(new FileReader("src/test/resources/databuyer"))) {
+            List<String[]> csvData = csvReader.readAll();
+            Object[][] csvDataObject = new Object[csvData.size()][2];
+            for (int i = 0; i < csvData.size() ; i++){
+                csvDataObject[i] = csvData.get(i);
+            }
+            return csvDataObject;
+        }}
+
+    @Test(dataProvider = "DataBuyer")
+
+ void CheckOut(String name, String familyname, String postcode) {
+
         WebElement userNameInput = webDrv.findElement(By.id("user-name"));
         userNameInput.sendKeys("standard_user");
 
@@ -36,14 +50,14 @@ public class BuyItemsTest extends TestUtil {
         WebElement checkout = webDrv.findElement(By.id("checkout"));
         checkout.click();
 
-        WebElement FirstName = webDrv.findElement(By.id("first-name"));
-        FirstName.sendKeys("First");
+        WebElement FirstNameInput = webDrv.findElement(By.id("first-name"));
+        FirstNameInput.sendKeys(name);
 
-        WebElement LastName = webDrv.findElement(By.id("last-name"));
-        LastName.sendKeys("Second");
+        WebElement LastNameInput = webDrv.findElement(By.id("last-name"));
+        LastNameInput.sendKeys(familyname);
 
-        WebElement ZipCode = webDrv.findElement(By.id("postal-code"));
-        ZipCode.sendKeys("1000");
+        WebElement ZipCodeInput = webDrv.findElement(By.id("postal-code"));
+        ZipCodeInput.sendKeys(postcode);
 
         WebElement continu = webDrv.findElement(By.name("continue"));
         continu.click();

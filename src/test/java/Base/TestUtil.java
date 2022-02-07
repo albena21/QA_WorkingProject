@@ -10,15 +10,14 @@ import java.util.Properties;
 
 public class TestUtil {
 
-    public WebDriver webDrv;
+    protected WebDriver webDrv;
     private String applicationUrl, browser;
 
 
     @BeforeMethod
-    public WebDriver setUp(){
+    public void setUp(){
         setupBrowserDriver();
         loadInitialPage();
-        return null;
     }
     private void loadInitialPage() {
         webDrv.get(applicationUrl);

@@ -4,7 +4,6 @@ import Base.TestUtil;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,8 +16,6 @@ import java.time.Duration;
 import java.util.List;
 
  public class WrongLoginTest extends TestUtil {
-
-
      @DataProvider(name = "wrongLogin")
      public static Object[][] readCvsloginFile() throws IOException, CsvException {
         try (CSVReader csvReader = new CSVReader(new FileReader("src/test/resources/wrongpass"))) {
@@ -33,13 +30,14 @@ import java.util.List;
         @Test(dataProvider = "wrongLogin")
             public void wronglogin (String userName, String password) {
 
-            webDrv.get("https://www.saucedemo.com/");
-            WebDriverWait wait = new WebDriverWait(webDrv, Duration.ofSeconds(6));
+         WebDriverWait wait = new WebDriverWait(webDrv, Duration.ofSeconds(6));
 
             WebElement userNameInput = webDrv.findElement(By.id ("user-name"));
+             userNameInput.clear();
              userNameInput.sendKeys(userName);
 
              WebElement passwordInput = webDrv.findElement(By.cssSelector("[placeholder=Password]"));
+             passwordInput.clear();
              passwordInput.sendKeys(password);
 
 
