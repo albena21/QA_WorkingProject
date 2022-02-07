@@ -1,3 +1,5 @@
+package FinalTests;
+
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.openqa.selenium.By;
@@ -25,7 +27,6 @@ public class LoginTest {
     public void tearDown() {
         webDrv.quit();
     }
-
 
     @Test
     public void logIn() {

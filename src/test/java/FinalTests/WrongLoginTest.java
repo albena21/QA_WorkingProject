@@ -1,37 +1,22 @@
+package FinalTests;
+
+import Base.TestUtil;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
- public class WrongLoginTest {
-    private WebDriver webDrv;
-
-    @BeforeTest
-    public void setUp() {
-        io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver().setup();
-        webDrv = new FirefoxDriver();
-        webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-    }
-
-    @AfterTest
-    public void tearDown() {
-
-        webDrv.quit();
-    }
+ public class WrongLoginTest extends TestUtil {
 
 
      @DataProvider(name = "wrongLogin")
@@ -43,7 +28,6 @@ import java.util.List;
                 csvDataObject[i] = csvData.get(i);
             }
             return csvDataObject;
-
         }}
 
         @Test(dataProvider = "wrongLogin")

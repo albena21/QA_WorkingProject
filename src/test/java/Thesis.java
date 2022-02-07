@@ -1,3 +1,4 @@
+import Base.TestUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,36 +12,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class Thesis {
-    private WebDriver webDrv;
-
-    @BeforeTest
-    public void setUp(){
-        io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver().setup();
-        webDrv = new FirefoxDriver();
-    }
-
-
-    public static WebDriver getChromeDriver(int implicitWaitSeconds) {
-        io.github.bonigarcia.wdm.WebDriverManager.chromedriver().setup(); //this download the needed web driver
-        WebDriver driver = new ChromeDriver(); //creates the session and open the
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
-        return driver;
-    }
-    public static WebDriver getFireFoxDriver(int implicitWaitSeconds){
-        io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver().setup();
-        WebDriver driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
-        return null;
-    }
-
-
-
-    @AfterTest
-    public void tearDown(){
-
-    webDrv.quit();
-    }
+public class Thesis extends TestUtil {
 
     @Test
     public void logIn(){

@@ -1,3 +1,6 @@
+package FinalTests;
+
+import Base.TestUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,20 +10,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class BuyItemsTest {
+public class BuyItemsTest extends TestUtil {
 
-    private WebDriver webDrv;
-
-    @BeforeTest
-    public void setUp(){
-        io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver().setup();
-        webDrv = new FirefoxDriver();
-    }
-    @AfterTest
-    public void tearDown(){
-
-        webDrv.quit();
-    }
     @Test
     public void CheckOut() {
         webDrv.get("https://www.saucedemo.com/");

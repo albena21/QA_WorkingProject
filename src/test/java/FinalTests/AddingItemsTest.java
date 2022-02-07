@@ -1,3 +1,6 @@
+package FinalTests;
+
+import Base.TestUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,18 +10,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class AddingItemsTest {
-    private WebDriver webDrv;
-
-    @BeforeTest
-    public void setUp(){
-        io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver().setup();
-        webDrv = new FirefoxDriver();
-    }
-    @AfterTest
-    public void tearDown(){
-        webDrv.quit();
-    }
+public class AddingItemsTest extends TestUtil {
 
     @Test
     public void AddItemtoCart(){

@@ -9,13 +9,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
     public static WebDriver getChromeDriver() {
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        return driver;
+        WebDriver webDrv = new ChromeDriver();
+        return webDrv;
     }
 
     public static WebDriver getFireFoxDriver(){
         WebDriverManager.firefoxdriver().setup();
-        WebDriver driver = new FirefoxDriver();
+        WebDriver webDrv = new FirefoxDriver();
         return null;
     }
 }
