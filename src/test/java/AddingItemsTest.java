@@ -7,7 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class AddItem {
+public class AddingItemsTest {
     private WebDriver webDrv;
 
     @BeforeTest
