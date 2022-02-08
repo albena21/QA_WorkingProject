@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AddingItemsTest extends TestUtil {
+ public class AddingItemsTest extends TestUtil {
 
     @Test
     public void AddItemtoCart(){

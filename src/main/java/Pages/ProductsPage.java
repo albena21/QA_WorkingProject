@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProductsPage {
-    protected WebDriver driver;
+    protected WebDriver webDrv;
     private static final String ADD_TO_CARD_LOCATOR = "//button[@id='add-to-cart-sauce-labs-%s']";
 
     @FindBy(id = "shopping_cart_container")
@@ -15,14 +15,14 @@ public class ProductsPage {
     @FindBy(className = "shopping_cart_badge")
     private WebElement shoppingCartImage;
 
-    public ProductsPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public ProductsPage(WebDriver webDrv){
+        this.webDrv = webDrv;
+        PageFactory.initElements(webDrv, this);
     }
 
     public void addToCartByProductName(String productName){
         String xpathOfItemToBeAdded = String.format(ADD_TO_CARD_LOCATOR, productName);
-        WebElement addToCartBtn = driver.findElement(By.xpath(xpathOfItemToBeAdded));
+        WebElement addToCartBtn = webDrv.findElement(By.xpath(xpathOfItemToBeAdded));
         addToCartBtn.click();
     }
 

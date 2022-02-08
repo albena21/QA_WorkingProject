@@ -11,14 +11,14 @@ public class DriverFactory {
     public static WebDriver getChromeDriver() {
         WebDriverManager.chromedriver().setup();
         WebDriver webDrv = new ChromeDriver();
-       // webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
+      //  webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
         return webDrv;
     }
 
     public static WebDriver getFireFoxDriver(){
         WebDriverManager.firefoxdriver().setup();
         WebDriver webDrv = new FirefoxDriver();
-        //webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
+       // webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
         return webDrv;
     }
 }
