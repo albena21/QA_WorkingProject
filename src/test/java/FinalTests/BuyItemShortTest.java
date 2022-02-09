@@ -45,7 +45,7 @@ import com.opencsv.exceptions.CsvException;
             WebElement FirstNameInput = webDrv.findElement(By.id("first-name"));
             FirstNameInput.sendKeys(firstname);
 
-            WebElement LastNameInput = webDrv.findElement(By.id("last-name"));
+            WebElement LastNameInput = webDrv.findElement(By.name("lastName"));
             LastNameInput.sendKeys(lastname);
 
             WebElement ZipCodeInput = webDrv.findElement(By.id("postal-code"));

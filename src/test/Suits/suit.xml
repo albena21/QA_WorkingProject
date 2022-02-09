@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="1" verbose="6" name="QA_WorkingProject"
+       annotations="JDK" parallel="classes">
+
+    <test name="First Test Suite">
+        <classes>
+            <class name="FinalTests.AddToCartShortTest"/>
+            <class name="FinalTests.BuyItemShortTest"/>
+            <class name="FinalTests.AddToCartShortTest"/>
+        </classes>
+    </test>
+    <packages>
+        <package name="FinalTests"/>
+    </packages>
+</suite>
