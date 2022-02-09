@@ -10,11 +10,11 @@ import org.testng.Assert;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
-    public class BuyItemFullTest extends TestUtil {
+    public class BuyItemShortTest extends TestUtil {
      @DataProvider(name = "DataBuyer")
         public static Object[][] readCvsloginFile() throws IOException, CsvException {
         try (CSVReader csvReader = new CSVReader(new FileReader
-                ("src/test/resources/databuyer"))) {
+                ("src/test/resources/DataBuyer"))) {
             List<String[]> csvData = csvReader.readAll();
             Object[][] csvDataObject = new Object[csvData.size()][2];
             for (int i = 0; i < csvData.size(); i++) {
@@ -25,7 +25,7 @@ import com.opencsv.exceptions.CsvException;
     }
 
     @Test(dataProvider = "DataBuyer")
-      public void AutoLogInAddItemandbuy(String firstname, String lastname, String postcode) {
+      public void AutoLogInAddItemAndBuy(String firstname, String lastname, String postcode) {
 
             LoginPage loginPage = new LoginPage(webDrv);
             ProductsPage productsPage = loginPage.login

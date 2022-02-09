@@ -1,12 +1,11 @@
 package FinalTests;
 
 import Base.TestUtil;
-import Pages.LoginPage;
-import Pages.ProductsPage;
+import Pages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AddToCartTest extends TestUtil {
+public class AddToCartShortTest extends TestUtil {
    @Test
    public void AddToCartItems() {
         LoginPage loginPage = new LoginPage(webDrv);

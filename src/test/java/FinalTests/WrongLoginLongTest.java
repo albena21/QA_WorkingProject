@@ -3,23 +3,19 @@ package FinalTests;
 import Base.TestUtil;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import java.io.FileReader;
-import java.io.IOException;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.*;
+import org.testng.annotations.*;
+import java.io.*;
 import java.time.Duration;
 import java.util.List;
 
- public class WrongLoginTest extends TestUtil {
-     @DataProvider(name = "wrongLogin")
-     public static Object[][] readCvsloginFile() throws IOException, CsvException {
+ public class WrongLoginLongTest extends TestUtil {
+     @DataProvider(name = "WrongLogin")
+     public static Object[][] readCvsloginFileW() throws IOException, CsvException {
         try (CSVReader csvReader = new CSVReader
-                (new FileReader("src/test/resources/wrongpass"))) {
+                (new FileReader("src/test/resources/WrongLogin"))) {
             List<String[]> csvData = csvReader.readAll();
             Object[][] csvDataObject = new Object[csvData.size()][2];
             for (int i = 0; i < csvData.size() ; i++){
@@ -28,8 +24,8 @@ import java.util.List;
             return csvDataObject;
         }}
 
-        @Test(dataProvider = "wrongLogin")
-            public void wronglogin (String userName, String password) {
+        @Test(dataProvider = "WrongLogin")
+            public void WrongLogin(String userName, String password) {
 
          WebDriverWait wait = new WebDriverWait(webDrv, Duration.ofSeconds(6));
 

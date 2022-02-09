@@ -1,16 +1,11 @@
 package utils;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.List;
-import java.util.Properties;
+import java.io.*;
+import java.util.*;
 
 public class HelperCsv {
-    public static Object[][] readCsvFile(String filename) throws IOException, CsvException {
+    public static Object[][] ReadCsvLoginFile(String filename) throws IOException, CsvException {
         try (CSVReader csvReader = new CSVReader(new FileReader(filename))){
             List<String[]> csvData = csvReader.readAll();
             Object[][] csvDataObject = new Object[csvData.size()][2];
@@ -21,7 +16,7 @@ public class HelperCsv {
         }
     }
 
-    public void readConfig() throws IOException {
+    public void ReadConfig() throws IOException {
         try (FileInputStream configFile = new FileInputStream("filepath")){
             Properties config = new Properties();
             config.load(configFile);

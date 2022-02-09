@@ -3,19 +3,16 @@ package FinalTests;
 import Base.TestUtil;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import java.io.FileReader;
-import java.io.IOException;
+import org.testng.annotations.*;
+import java.io.*;
 import java.util.List;
 
-public class BuyItemsTest extends TestUtil {
+public class BuyItemLongTest extends TestUtil {
     @DataProvider(name = "DataBuyer")
-    public static Object[][] readCvsloginFile() throws IOException, CsvException {
-        try (CSVReader csvReader = new CSVReader(new FileReader("src/test/resources/databuyer"))) {
+    public static Object[][] readCvsloginFileW() throws IOException, CsvException {
+        try (CSVReader csvReader = new CSVReader(new FileReader("src/test/resources/DataBuyer"))) {
             List<String[]> csvData = csvReader.readAll();
             Object[][] csvDataObject = new Object[csvData.size()][2];
             for (int i = 0; i < csvData.size() ; i++){
@@ -26,7 +23,7 @@ public class BuyItemsTest extends TestUtil {
 
     @Test(dataProvider = "DataBuyer")
 
- void CheckOut(String name, String familyname, String postcode) {
+ void CheckOut(String name, String FamilyName, String postcode) {
 
         WebElement userNameInput = webDrv.findElement(By.id("user-name"));
         userNameInput.sendKeys("standard_user");
@@ -37,11 +34,11 @@ public class BuyItemsTest extends TestUtil {
         WebElement logInBtn = webDrv.findElement(By.name("login-button"));
         logInBtn.click();
 
-        WebElement addtocart = webDrv.findElement(By.name("add-to-cart-sauce-labs-bike-light"));
-        addtocart.click();
+        WebElement AddToCart = webDrv.findElement(By.name("add-to-cart-sauce-labs-bike-light"));
+        AddToCart.click();
 
-        WebElement addcart = webDrv.findElement(By.id("add-to-cart-sauce-labs-backpack"));
-        addcart.click();
+        WebElement AddCart = webDrv.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        AddCart.click();
 
         WebElement cart = webDrv.findElement(By.id("shopping_cart_container"));
         cart.click();
@@ -53,13 +50,13 @@ public class BuyItemsTest extends TestUtil {
         FirstNameInput.sendKeys(name);
 
         WebElement LastNameInput = webDrv.findElement(By.id("last-name"));
-        LastNameInput.sendKeys(familyname);
+        LastNameInput.sendKeys(FamilyName);
 
         WebElement ZipCodeInput = webDrv.findElement(By.id("postal-code"));
         ZipCodeInput.sendKeys(postcode);
 
-        WebElement continu = webDrv.findElement(By.name("continue"));
-        continu.click();
+        WebElement Continu = webDrv.findElement(By.name("continue"));
+        Continu.click();
 
         WebElement Finish = webDrv.findElement(By.id("finish"));
         Finish.click();
