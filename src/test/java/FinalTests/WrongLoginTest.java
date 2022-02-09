@@ -18,7 +18,8 @@ import java.util.List;
  public class WrongLoginTest extends TestUtil {
      @DataProvider(name = "wrongLogin")
      public static Object[][] readCvsloginFile() throws IOException, CsvException {
-        try (CSVReader csvReader = new CSVReader(new FileReader("src/test/resources/wrongpass"))) {
+        try (CSVReader csvReader = new CSVReader
+                (new FileReader("src/test/resources/wrongpass"))) {
             List<String[]> csvData = csvReader.readAll();
             Object[][] csvDataObject = new Object[csvData.size()][2];
             for (int i = 0; i < csvData.size() ; i++){

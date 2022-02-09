@@ -10,7 +10,7 @@ import org.testng.Assert;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
-    public class AutoTest extends TestUtil {
+    public class BuyItemFullTest extends TestUtil {
      @DataProvider(name = "DataBuyer")
         public static Object[][] readCvsloginFile() throws IOException, CsvException {
         try (CSVReader csvReader = new CSVReader(new FileReader
@@ -25,15 +25,16 @@ import com.opencsv.exceptions.CsvException;
     }
 
     @Test(dataProvider = "DataBuyer")
-      public void AutoLogInAddItemandbuy(String name, String familyname, String postcode) {
+      public void AutoLogInAddItemandbuy(String firstname, String lastname, String postcode) {
 
             LoginPage loginPage = new LoginPage(webDrv);
             ProductsPage productsPage = loginPage.login
                     ("standard_user", "secret_sauce");
             productsPage.addToCartByProductName("backpack");
             productsPage.addToCartByProductName("onesie");
+            productsPage.addToCartByProductName("fleece-jacket");
 
-            Assert.assertEquals(productsPage.getNumbersInTheCart(), 2, "we added items");
+            Assert.assertEquals(productsPage.getNumbersInTheCart(), 3, "we added items");
 
             WebElement cart = webDrv.findElement(By.id("shopping_cart_container"));
             cart.click();
@@ -42,10 +43,10 @@ import com.opencsv.exceptions.CsvException;
             checkout.click();
 
             WebElement FirstNameInput = webDrv.findElement(By.id("first-name"));
-            FirstNameInput.sendKeys(name);
+            FirstNameInput.sendKeys(firstname);
 
             WebElement LastNameInput = webDrv.findElement(By.id("last-name"));
-            LastNameInput.sendKeys(familyname);
+            LastNameInput.sendKeys(lastname);
 
             WebElement ZipCodeInput = webDrv.findElement(By.id("postal-code"));
             ZipCodeInput.sendKeys(postcode);
