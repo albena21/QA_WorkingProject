@@ -14,7 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-public class BadUsersTest extends TestUtil {
+public class BadLoginTest extends TestUtil {
     @DataProvider(name = "wrongLogin")
     public static Object[][] readCvsloginFile() throws IOException, CsvException {
         try (CSVReader csvReader = new CSVReader

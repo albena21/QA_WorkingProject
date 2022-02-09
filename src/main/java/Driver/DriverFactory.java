@@ -8,17 +8,17 @@ import java.time.Duration;
 
 
 public class DriverFactory {
-    public static WebDriver getChromeDriver() {
+    public static WebDriver getChromeDriver(long implicitWaitSeconds) {
         WebDriverManager.chromedriver().setup();
         WebDriver webDrv = new ChromeDriver();
-      //  webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
+        webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
         return webDrv;
     }
 
-    public static WebDriver getFireFoxDriver(){
+    public static WebDriver getFireFoxDriver(long implicitWaitSeconds){
         WebDriverManager.firefoxdriver().setup();
         WebDriver webDrv = new FirefoxDriver();
-       // webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
+        webDrv.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
         return webDrv;
     }
 }
