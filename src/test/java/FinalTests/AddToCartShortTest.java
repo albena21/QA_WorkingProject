@@ -16,5 +16,6 @@ public class AddToCartShortTest extends TestUtil {
         productsPage.addToCartByProductName("fleece-jacket");
 
         Assert.assertEquals(productsPage.getNumbersInTheCart(), 3, "we added items");
+
     }
 }
